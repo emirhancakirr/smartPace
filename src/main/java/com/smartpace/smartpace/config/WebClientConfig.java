@@ -24,7 +24,6 @@ public class WebClientConfig {
             .responseTimeout(Duration.ofMillis(properties.getTimeout()));
         
         return WebClient.builder()
-            .baseUrl(properties.getBaseUrl())
             .clientConnector(new ReactorClientHttpConnector(httpClient))
             .build();
     }
