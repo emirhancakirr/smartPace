@@ -1,5 +1,11 @@
 package com.smartpace.smartpace.service.impl;
 
-public interface PacePredictionServiceImpl {
+import org.springframework.stereotype.Service;
+
+import com.smartpace.smartpace.service.PacePredictionService;
+
+@Service
+public class PacePredictionServiceImpl implements PacePredictionService {
+
 
 }
