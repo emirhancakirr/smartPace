@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: smartpace
+
+server:
+  port: 8080
+
+concept2:
+  api:
+    base-url: https://log.concept2.com/api
+    timeout: 3000
+    retry:
+      max-attempts: 2
+      initial-interval: 1000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
+logging:
+  level:
+    root: INFO
+    com.smartpace: DEBUG
+    org.springframework.web: INFO
+    org.springframework.web.reactive: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
