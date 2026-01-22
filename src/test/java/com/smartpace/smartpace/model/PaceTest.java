@@ -63,6 +63,15 @@ public class PaceTest {
     }
 
     @Test
+    void shouldThrowExceptionForNegativeValues(){
+        int deciseconds = -100;
+
+        Pace pace = Pace.ofDeciseconds(deciseconds);
+        assertThrows(IllegalArgumentException.class, ()-> Pace.ofDeciseconds(deciseconds));
+
+    }
+
+    @Test
     void shouldThrowExceptionForInvalidFormattedString() {
         String invalid = "invalid";
 
@@ -88,4 +97,5 @@ public class PaceTest {
         assertEquals("0:12.0", Pace.ofFormattedString("0:12.0").getFormattedString());
         assertEquals("2:30.5", Pace.ofFormattedString("2:30.5").getFormattedString());
     }
+
 }
