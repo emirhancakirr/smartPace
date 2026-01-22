@@ -24,7 +24,7 @@ public class PaceTest {
     void shouldcreatePaceFromFormattedString() {
         String formatedString = "1:45.2";
 
-        Pace pace = pace.ofFormattedString(formatedString);
+        Pace pace = Pace.ofFormattedString(formatedString);
 
         assertNotNull(pace);
         assertEquals(1052, pace.getDeciseconds());
@@ -35,7 +35,7 @@ public class PaceTest {
     void shouldHandleZeroDeciseconds() {
         int deciseconds = 0;
 
-        Pace pace = pace.ofDeciseconds(deciseconds);
+        Pace pace = Pace.ofDeciseconds(deciseconds);
 
         assertNotNull(pace);
         assertEquals(0, pace.getDeciseconds());
@@ -63,11 +63,10 @@ public class PaceTest {
     }
 
     @Test
-    void shouldThrowExceptionForNegativeValues(){
+    void shouldThrowExceptionForNegativeValues() {
         int deciseconds = -100;
 
-        Pace pace = Pace.ofDeciseconds(deciseconds);
-        assertThrows(IllegalArgumentException.class, ()-> Pace.ofDeciseconds(deciseconds));
+        assertThrows(IllegalArgumentException.class, () -> Pace.ofDeciseconds(deciseconds));
 
     }
 
