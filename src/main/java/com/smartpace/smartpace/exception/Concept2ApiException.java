@@ -1,22 +1,21 @@
 package com.smartpace.smartpace.exception;
 
-public class Concept2ApiException extends RuntimeException{
+public class Concept2ApiException extends RuntimeException {
 
-    private final int statustCode;
+    private final int statusCode;
 
-    public Concept2ApiException(String message, int statusCode){
+    public Concept2ApiException(String message, int statusCode) {
         super(message);
-        this.statustCode = statusCode;
+        this.statusCode = statusCode;
 
     }
 
-
-    public Concept2ApiException(String message, Throwable cause, int statusCode){
-        super(message,cause);
-        this.statustCode = statusCode;
+    public Concept2ApiException(String message, Throwable cause, int statusCode) {
+        super(message, cause);
+        this.statusCode = statusCode;
     }
 
-    public int getStatustCode() {
-        return statustCode;
+    public int getStatusCode() {
+        return statusCode;
     }
 }
