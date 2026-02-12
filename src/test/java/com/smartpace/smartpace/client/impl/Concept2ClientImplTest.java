@@ -4,6 +4,7 @@ import com.smartpace.smartpace.client.Concept2Client;
 import com.smartpace.smartpace.client.dto.Concept2WorkoutDto;
 import com.smartpace.smartpace.config.Concept2ApiProperties;
 import com.smartpace.smartpace.exception.Concept2ApiException;
+import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.buffer.DataBuffer;
@@ -40,7 +41,8 @@ class Concept2ClientImplTest {
                 .baseUrl(BASE_URL)
                 .exchangeFunction(exchangeFunction)
                 .build();
-        client = new Concept2ClientImpl(webClient, properties);
+        CircuitBreakerRegistry registry = CircuitBreakerRegistry.ofDefaults();
+        client = new Concept2ClientImpl(webClient, properties, registry);
     }
 
     @Test
