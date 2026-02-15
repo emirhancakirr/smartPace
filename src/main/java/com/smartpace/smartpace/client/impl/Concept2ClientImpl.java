@@ -63,6 +63,12 @@ public class Concept2ClientImpl implements Concept2Client {
                     }
                     return true;
                 })
+                .onErrorMap(throwable -> {
+                    if (throwable.getClass().getName().contains("RetryExhaustedException") && throwable.getCause() != null) {
+                        return throwable.getCause();
+                    }
+                    return throwable;
+                })
                 .onErrorMap(throwable -> isTimeout(throwable)
                         ? new Concept2TimeoutException(
                                 "Concept2 API request timed out after " + properties.getTimeout() + "ms",
